@@ -34,18 +34,32 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
-let apiKey = "6d01eef1b1c1dd92545f51cab940e040";
-let city = "Kyiv";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(displayTemperature);
+
+function search(city) {
+  let apiKey = "6d01eef1b1c1dd92545f51cab940e040";
+  //let city = "Kyiv";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+  console.log(cityInputElement.value);
+}
+search("Kyiv");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
 
 //air pollution data//
-function airpollutionElement(response) {
-  console.log(response.list);
-  let lat = response.city.coord.lat;
-  let lon = response.city.coord.lon;
-  let apiUrl = `http://api.openweathermap.org/data/2.5/air_pollution?${lat}&${lon}&appid=${apiKey}`;
-  let airpollutionElement = document.querySelector("#air");
-  airpollutionElement.innerHTML = response.list[main.aqi];
-  axios.get(apiUrl).then(airpollutionElement);
-}
+//function airpollutionElement(response) {
+//console.log(response.list);
+//let lat = response.city.coord.lat;
+//let lon = response.city.coord.lon;
+//let apiUrl = `http://api.openweathermap.org/data/2.5/air_pollution?${lat}&${lon}&appid=${apiKey}`;
+//let airpollutionElement = document.querySelector("#air");
+//airpollutionElement.innerHTML = response.list[main.aqi];
+//axios.get(apiUrl).then(airpollutionElement);
+//}
