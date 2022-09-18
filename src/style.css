@@ -1,9 +1,10 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgba(123, 75, 236, 0.6);
+  background-color: rgba(123, 75, 236, 0.2);
   margin: 200px 400px;
 }
 .container {
+  flex-wrap: nowrap;
   margin: 30px auto;
 }
 .weather-app {
