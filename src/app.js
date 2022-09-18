@@ -44,7 +44,7 @@ function displayForecast(response) {
           width="42"
         />
         <div class="weather-forecast-temperatures">
-          <div class="weather-forecast-temperature">${Math.round(
+          <div class="weather-forecast-temperature" style="color:black">${Math.round(
             forecastDay.temp.max
           )}°</div>
         </div>
